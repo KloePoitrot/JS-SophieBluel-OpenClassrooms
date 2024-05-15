@@ -1,16 +1,48 @@
-async function getWork() {
+// =======================
+//
+// __________________Show gallery
+// 
+// =======================
+async function getWork(cat) {
     const req = await fetch("http://localhost:5678/api/works");
-    const get = await req.json();
+    const work = await req.json();
 
     //DOM 
     let workElements = document.querySelector(".gallery")
     workElements.innerHTML = ''
 
     // List work from API
-    for(let i = 0; i < get.length ; i++){
-        workElements.innerHTML += '<figure><img src="' + get[i].imageUrl + '" alt="' + get[i].title + '" data-name="' + get[i].title + '"><figcaption>' + get[i].title + '</figcaption></figure>'
+    if (cat === null) {
+        for(let i = 0; i < work.length ; i++){
+            workElements.innerHTML += '<figure><img src="' + work[i].imageUrl + '" alt="' + work[i].title + '" data-name="' + work[i].category.name + '"><figcaption>' + work[i].   title + '</figcaption></figure>'
+        }
+    }
+
+    // if (cat == )
+}
+
+// =======================
+//
+// __________________Get Categories
+// 
+// =======================
+async function getCategories() {
+    const req = await fetch("http://localhost:5678/api/categories");
+    const categories = await req.json();
+
+     //DOM 
+    let catElements = document.querySelector("#categories")
+
+    // List categories from API
+    for(let i = 0; i < categories.length ; i++){
+        catElements.innerHTML += '<input type="button" value="' + categories[i].name + '">'
     }
 }
 
-getWork()
+document.querySelector("#categories").addEventListener('click', () => {
+        console.log('wow')
+    }
+)
 
+getWork(null)
+getCategories()
