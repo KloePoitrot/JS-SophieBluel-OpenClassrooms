@@ -137,7 +137,7 @@ li:hover {
 	width: 100%;
 
 }
-#contact {
+#contact, #login {
 	width: 50%;
 margin: auto;
 }
@@ -148,23 +148,23 @@ margin: auto;
 #contact h2{
 	margin-bottom: 20px;
 }
-#contact form {
+form {
 	text-align: left;
 	margin-top:30px;
 	display: flex;
 	flex-direction: column;
 }
 
-#contact input{
+input{
 	height: 50px;
 	font-size: 1.2em;
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
-#contact label {
+label {
 	margin: 2em 0 1em 0;
 }
-#contact textarea {
+textarea {
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
@@ -216,4 +216,14 @@ footer nav ul {
 #portfolio .hidden{
 	display: none;
 	transition:.1s;
+}
+
+
+/* login */
+#login p {
+	text-align: center;
+	text-decoration: underline;
+}
+#login p:hover {
+	color: #B1663C;
 }

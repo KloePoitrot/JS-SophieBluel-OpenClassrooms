@@ -9,7 +9,7 @@ async function getCategories() {
      //DOM 
     let catElements = document.querySelector("#categories")
     catElements.innerHTML = ''
-    catElements.innerHTML += '<input type="button" value="Tous">'
+    catElements.innerHTML += '<input type="button" class="active" value="Tous">'
     // List categories from API
     for(let i = 0; i < categories.length ; i++){
         catElements.innerHTML += '<input type="button" value="' + categories[i].name + '">'
