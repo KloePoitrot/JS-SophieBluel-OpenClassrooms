@@ -223,14 +223,16 @@ footer nav ul {
 
 
 /* login */
-.logintitle{
+#login h2{
 	text-align: center;
 }
-#login p {
+
+#login a {
+	display: block;
 	text-align: center;
 	text-decoration: underline;
 }
-#login p:hover {
+#login a:hover {
 	color: #B1663C;
 }
 .currentLink{
@@ -238,4 +240,12 @@ footer nav ul {
 }
 .currentLink:hover{
 	color: black;
+}
+.error{
+	margin-top:2rem;
+	text-align: center;
+	color: red;
+}
+.hidden{
+	display: none;
 }

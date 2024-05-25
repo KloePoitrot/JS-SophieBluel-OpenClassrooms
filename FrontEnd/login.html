@@ -15,24 +15,25 @@
 	<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
 	<nav>
 		<ul>
-			<li>projets</li>
-			<li>contact</li>
+			<li><a href="./#portfolio">projets</a></li>
+			<li><a href="./#contact">contact</a></li>
 			<li class="currentLink">login</li>
 			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 		</ul>
 	</nav>
 </header>
 <main>
-    <h2 class="logintitle">Log in</h2>
-	<section id="login">
-        <form action="#">
-            <label for="email">E-mail</label>
-            <input type="email" name="email">
-            <label for="password">Mot de passe</label>
-            <input type="password" name="password">
-            <input type="submit" name="connect" value="Se connecter">
+    <section id="login">
+        <h2>Log in</h2>
+        <p class="error hidden">Erreur dans l’identifiant ou le mot de passe</p>
+        <form method="post">
+            <label>E-mail</label>
+            <input type="email" name="mail">
+            <label>Mot de passe</label>
+            <input type="password" name="pw">
+            <input type="submit" name="sent" value="Se connecter">
         </form>
-        <p>Mot de passe oublié</p>
+        <a href="">Mot de passe oublié</a>
     </section>
 </main>
 
@@ -43,6 +44,6 @@
 		</ul>
 	</nav>
 </footer>
+<script src="assets/js/modal/login.js"></script>
 </body>
-<script type="text/javascript" language="JavaScript" src="assets/js/portfolio/login.js"></script>
 </html>
