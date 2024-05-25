@@ -15,10 +15,10 @@ async function sendData(email, password) {
             sessionStorage.setItem("userId", data.userId)
             sessionStorage.setItem("token", data.token)
             window.location.href = "./index.html";
+        } else {
+            document.querySelector("#login .error").className = "error"
         }
-    }).catch(
-        document.querySelector("#login .error").className = "error"
-    );
+    });
 }
 
 document.querySelector('#login input[name="sent"]').addEventListener("click", (e) =>{

@@ -223,6 +223,10 @@ footer nav ul {
 
 
 /* login */
+.logout{
+	cursor: pointer;
+}
+
 #login h2{
 	text-align: center;
 }
