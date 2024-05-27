@@ -1,11 +1,9 @@
-var dataOne = sessionStorage.getItem("userId")
-	var dataTwo = sessionStorage.getItem("token")
+var dataToken = sessionStorage.getItem("token")
 
-if(dataOne != null && dataTwo != null){
+if(dataToken !== null){
     document.querySelector(".logout").innerHTML = "Logout"
     document.querySelector(".logout").addEventListener('click', (e) => {
         e.preventDefault
-        sessionStorage.removeItem("userId")
         sessionStorage.removeItem("token")
         location.reload()
     })

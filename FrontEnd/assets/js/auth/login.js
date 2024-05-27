@@ -12,13 +12,15 @@ async function sendData(email, password) {
     }).then(async (data) => {
         if (data.ok) {
             data = await data.json()
-            sessionStorage.setItem("userId", data.userId)
             sessionStorage.setItem("token", data.token)
             window.location.href = "./index.html";
         } else {
             document.querySelector("#login .error").className = "error"
         }
-    });
+    }).catch((error) => {
+        console.error(error);
+    });;
+    
 }
 
 document.querySelector('#login input[name="sent"]').addEventListener("click", (e) =>{

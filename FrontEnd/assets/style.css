@@ -190,6 +190,13 @@ footer nav ul {
 }
 
 
+
+
+
+
+
+
+
 /* CATEGORIES */
 #portfolio form{
 	display: flex;
@@ -223,9 +230,6 @@ footer nav ul {
 
 
 /* login */
-.logout{
-	cursor: pointer;
-}
 
 #login h2{
 	text-align: center;
@@ -251,5 +255,97 @@ footer nav ul {
 	color: red;
 }
 .hidden{
-	display: none;
+	display: none!important;
+}
+
+
+/*  Mode édtion */
+.editmode{
+	display: flex;
+	gap:10px;
+	position: fixed;
+	top:0;
+	left:0;
+	width:100%;
+	background-color: black;
+	color: white;
+	padding:1rem;
+	justify-content: center;
+	margin: 0;
+}
+
+.editBtn{
+	display: flex;
+	gap:10px;
+	position: absolute;
+	margin-top:-3rem;
+	margin-left:43rem;
+}
+
+/*  Mode éditon galerie */
+#editWork{
+	background: rgba(0, 0, 0, 0.2);
+	position:fixed;
+	left:0;
+	top:-4px;
+	width:100%;
+	height:100vh;
+}
+#editWork > div {
+	max-width:500px;
+	margin:5rem auto;
+	background:white;
+	padding:2rem 8rem;
+	border-radius: 1rem;
+}
+#editWork h2 {
+	text-align: center;
+	margin:1rem 0 3rem 0;
+	font-size:1.5rem;
+	color: black;
+	font-family: 'Work Sans';
+	font-weight: lighter;
+}
+#editWork article > div{
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	column-gap:10px;
+	row-gap:20px;
+}
+#editWork article img{
+	width:100%
+}
+#editWork .divider{
+	border-top:1px solid grey;
+	margin:3rem 0 2rem 0;
+}
+#editWork input{
+	display: block;
+	height: 35px;
+	width:50%;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+.closeModal {
+	text-align: right;
+    display: block;
+    margin-right: -5.5rem;
+}
+.deleteWork{
+	display: flex;
+	position: relative;
+	justify-content: end;
+	z-index:10;
+	margin-bottom:-1.75rem;
+	margin-right:.25rem;
+}
+.deleteWork:before{
+	padding:5px;
+	border-radius:5px;
+	background: black;
+	color: white;
+}
+
+.deleteWork:before, .closeModal, .logout, .editBtn{
+	cursor: pointer;
 }
