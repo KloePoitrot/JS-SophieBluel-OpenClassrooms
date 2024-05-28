@@ -158,12 +158,17 @@ margin: auto;
 	flex-direction: column;
 }
 
-#contact input, #login input{
+#contact input, #login input, select {
 	height: 50px;
 	font-size: 1.2em;
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	outline:none;
+	-webkit-appearance:none!important;
+	-moz-appearance:none!important
 }
+
+
 #contact label, #login label{
 	margin: 2em 0 1em 0;
 }
@@ -331,6 +336,10 @@ footer nav ul {
 #file{
 	visibility: hidden!important;
 }
+.galleryAddContent form{
+	display: flex;
+    flex-direction: column;
+}
 .bluesection {
     display: flex;
 	flex-direction: column;
@@ -353,15 +362,12 @@ label[for="file"] {
     border-radius: 2rem;
     margin: .5rem 20% -1rem 20%;
 }
-
 input#titre, input#categorie {
 	width:100%;
 }
-
 input#titre {
 	margin-bottom:1rem;
 }
-
 .greyBtn{
 	background:#a7a7a7!important;
 }
