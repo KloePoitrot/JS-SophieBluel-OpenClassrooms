@@ -1,28 +1,24 @@
-// =======================
-//
-// __________________Get Categories
-// 
-// =======================
-async function getCategories() {
-    const req = await fetch("http://localhost:5678/api/categories");
-    const categories = await req.json();
-     //DOM 
+async function getCategories(){
+    fetch("http://localhost:5678/api/categories")
+    .then(async (data) => {
+        if (data.ok) {
+            data = await data.json()
+            filterCategories(data)
+        }
+    }).catch((error) => {
+        console.error(error);
+    });
+}
+
+function filterCategories(data){
+    //DOM 
     let catElements = document.querySelector("#categories")
     catElements.innerHTML = ''
     catElements.innerHTML += '<input type="button" class="active" value="Tous">'
     // List categories from API
-    for(let i = 0; i < categories.length ; i++){
-        catElements.innerHTML += '<input type="button" value="' + categories[i].name + '">'
+    for(let i = 0; i < data.length ; i++){
+        catElements.innerHTML += '<input type="button" value="' + data[i].name + '">'
     }
-    
-    
-    
-    
-    // =======================
-    //
-    // __________________Display by categories
-    // 
-    // =======================
     const catBtns = document.querySelectorAll("#categories input")
     catBtns.forEach((catBtn) => {
         catBtn.addEventListener('click', () => {
@@ -31,7 +27,7 @@ async function getCategories() {
             catBtn.classList.add('active')
         })
     })
-
+    
     function filter(value){
         const workData = document.querySelectorAll(".gallery figure")
         workData.forEach((data) => {
@@ -53,3 +49,4 @@ async function getCategories() {
         })
     }
 }
+getCategories()

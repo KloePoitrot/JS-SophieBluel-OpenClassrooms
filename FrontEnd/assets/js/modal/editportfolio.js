@@ -1,4 +1,4 @@
-function modalEdit(workEdit, categoriesEdit){
+function modalEdit(workEdit){
     document.querySelector('.editBtn').addEventListener('click', () => {
         // Create modal with work list
         let sectionEdit = document.createElement('div')
