@@ -1,5 +1,6 @@
 async function modalEdit(){
     let workElements = ''
+    let catOption = ''
     
     // fetch work
     await fetch("http://localhost:5678/api/works")
@@ -14,6 +15,20 @@ async function modalEdit(){
                         <img src="` + data[i].imageUrl + `" alt="` + data[i].title + `">
                     </figure>
                 </div>`
+            }
+        }
+    }).catch((error) => {
+        console.error(error);
+    });
+
+    // fetch categories
+    await fetch("http://localhost:5678/api/categories")
+    .then(async (data) => {
+        if (data.ok) {
+            data = await data.json()
+            for(let i = 0; i < data.length ; i++){
+                catOption += `
+                <option value="` + data[i].name + `">` + data[i].name + `</option>`
             }
         }
     }).catch((error) => {
@@ -53,6 +68,7 @@ async function modalEdit(){
                     <label for="categorie">Catégorie</label>
                     <select name="categorie" id="categorie">
                         <option value="none">--Choisissez une catégorie--</option>
+                        ` + catOption + `
                     </select>
                     <div class="divider"></div>
                     <input class="greyBtn" type="submit" name="sent" value="Valider">
