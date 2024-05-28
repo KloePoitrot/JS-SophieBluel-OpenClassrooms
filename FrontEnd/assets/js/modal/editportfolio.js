@@ -10,7 +10,7 @@ async function modalEdit(){
             for(let i = 0; i < data.length ; i++){
                 workElements += `
                 <div>
-                    <i class="fas fa-trash-alt deleteWork" data-id="` + data[i].id + `"></i>
+                    <i class="fas fa-trash-alt deleteWork" data-id="` + data[i].id + `" type="button"></i>
                     <figure>
                         <img src="` + data[i].imageUrl + `" alt="` + data[i].title + `">
                     </figure>
@@ -93,6 +93,7 @@ async function modalEdit(){
     document.querySelector('.closeModal').addEventListener('click', () => {
         document.body.removeChild(sectionEdit)
     })
+    getDeteleWork()
 }
 
 if(dataToken !== null){
