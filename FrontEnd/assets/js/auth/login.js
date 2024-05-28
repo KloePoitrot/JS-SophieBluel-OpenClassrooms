@@ -19,7 +19,7 @@ async function sendData(email, password) {
         }
     }).catch((error) => {
         console.error(error);
-    });;
+    });
     
 }
 

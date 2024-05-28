@@ -196,7 +196,6 @@ footer nav ul {
 
 
 
-
 /* CATEGORIES */
 #portfolio form{
 	display: flex;
@@ -291,7 +290,7 @@ footer nav ul {
 	width:100%;
 	height:100vh;
 }
-#editWork > div {
+#editWork .editModal {
 	max-width:500px;
 	margin:5rem auto;
 	background:white;
@@ -306,7 +305,7 @@ footer nav ul {
 	font-family: 'Work Sans';
 	font-weight: lighter;
 }
-#editWork article > div{
+#editWork #editWorkGallery {
 	display: grid;
 	grid-template-columns: repeat(5, 1fr);
 	column-gap:10px;
@@ -326,10 +325,55 @@ footer nav ul {
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
-.closeModal {
-	text-align: right;
-    display: block;
-    margin-right: -5.5rem;
+
+
+/* Ajout photo */
+#file{
+	visibility: hidden!important;
+}
+.bluesection {
+    display: flex;
+	flex-direction: column;
+    text-align: center;
+    background: #e9f1f6;
+    padding: 1rem;
+	margin-bottom:1rem;
+}
+
+.bluesection i {
+    font-size:5rem;
+	color: #ccd6dc;
+}
+
+label[for="file"] {
+    background: #ccd6dc;
+    color: #366583;
+    font-size: 1.5rem;
+    padding: .5rem;
+    border-radius: 2rem;
+    margin: .5rem 20% -1rem 20%;
+}
+
+input#titre, input#categorie {
+	width:100%;
+}
+
+input#titre {
+	margin-bottom:1rem;
+}
+
+.greyBtn{
+	background:#a7a7a7!important;
+}
+
+
+
+/* Modal buttons*/
+.navModal {
+    display: flex;
+	flex-direction: row-reverse;
+	justify-content: space-between;
+    margin: 0 -5.5rem;
 }
 .deleteWork{
 	display: flex;
@@ -346,6 +390,7 @@ footer nav ul {
 	color: white;
 }
 
-.deleteWork:before, .closeModal, .logout, .editBtn{
+/* Pointer */
+.deleteWork:before, .closeModal, .logout, .editBtn, .returnModal, .greyBtn{
 	cursor: pointer;
 }
