@@ -58,10 +58,10 @@ async function modalEdit(){
                 <h2>Ajout photo</h2>
                 <form>
                     <div class="bluesection">
-                    <i class="fa-regular fa-image"></i> 
-                        <label for="file">+ Ajouter photo</label>
+                        <i class="fa-regular fa-image"></i> 
+                        <label for="file" class="uploadBtn">+ Ajouter photo</label>
                         <input id="file" type="file">
-                        jpg, png: 4mo max
+                        <p>jpg, png: 4mo max</p>
                     </div>
                     <label for="addTitle">Titre</label>
                     <input type="text" id="addTitle">
@@ -92,6 +92,24 @@ async function modalEdit(){
     // Close modal
     document.querySelector('.closeModal').addEventListener('click', () => {
         document.body.removeChild(sectionEdit)
+    })
+
+    //add image preview
+    document.querySelector('#file').addEventListener('change', () => {
+        // Remove image if nothing is selected
+        if(document.querySelector('#file').value === ''){
+            document.querySelector(".bluesection i").className = 'fa-regular fa-image';
+            document.querySelector(".bluesection p").className = '';
+            document.querySelector("label[for='file']").className = 'uploadBtn';
+            document.querySelector("label[for='file']").innerHTML  = '+ Ajouter photo';
+        }
+        // Show preview if something is selected
+        if(document.querySelector('#file').value !== ''){
+            document.querySelector(".bluesection i").className = 'hidden';
+            document.querySelector(".bluesection p").className = 'hidden';
+            document.querySelector("label[for='file']").className = 'imgUplodaded';
+            document.querySelector("label[for='file']").innerHTML  = '<img src="' + window.URL.createObjectURL(document.querySelector('#file').files[0]) + '">';
+        }
     })
 
     //fuction for adding or deleting works

@@ -354,7 +354,7 @@ footer nav ul {
 	color: #ccd6dc;
 }
 
-label[for="file"] {
+.uploadBtn {
     background: #ccd6dc;
     color: #366583;
     font-size: 1.5rem;
@@ -370,6 +370,11 @@ input#addTitle {
 }
 .greyBtn{
 	background:#a7a7a7!important;
+}
+.bluesection label.imgUplodaded img {
+    margin: -1rem 0 -3.25rem 0;
+    height: 350px;
+    width: auto!important;
 }
 
 

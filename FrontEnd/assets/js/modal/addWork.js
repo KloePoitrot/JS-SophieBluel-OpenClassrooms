@@ -22,8 +22,10 @@ async function getAddWork(){
                 for (let i = 0; i <= img.files.length - 1; i++) {
                     let fsize = img.files.item(i).size;
                     let file = Math.round((fsize / 1024));
+                    console.log('e')
                     // Check size
                     if (file >= 4096) {
+                        console.log('c')
                         checkImg = false
                         if(document.querySelector(".errorfile") === null){
                             document.querySelector(".bluesection").insertAdjacentHTML('afterend', '<p class="error errorfile">La photo est trop grande (4mo)</p>')
@@ -35,13 +37,16 @@ async function getAddWork(){
                     if(file < 4096){
                         // check format
                         if(img.value.split('.')[1] == 'jpg' || img.value.split('.')[1] == 'png'){
+                            console.log('a')
                             checkImg = true
+                            
                             if(document.querySelector(".errorfile") !== null){
                                 document.querySelector(".errorfile").remove()
                             }
                         } else {
                             checkImg = false
                             if(document.querySelector(".errorfile") === null){
+                                console.log('b')
                                 document.querySelector(".bluesection").insertAdjacentHTML('afterend', '<p class="error errorfile">Le format de la photo est invalide (jpg ou png)</p>')
                             }
                         }
@@ -84,8 +89,7 @@ async function getAddWork(){
 
             // Update API
             if(checkImg === true && checkTitle === true && checkCategory === true){
-                console.log('yipee')
-                // addWork(image, title, category)
+                addWork(window.URL.createObjectURL(img.files[0]), title, category)
             }
 
         }
