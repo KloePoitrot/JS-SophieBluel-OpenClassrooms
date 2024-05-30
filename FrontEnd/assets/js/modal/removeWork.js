@@ -18,7 +18,6 @@ function deteleWork(data){
     fetch(`http://localhost:5678/api/works/${data}`, {
         method: "delete",
         headers: { 
-            "Content-Type": "application/json",
             "Authorization": `Bearer ${dataToken}`
         },
         body: JSON.stringify(delID)

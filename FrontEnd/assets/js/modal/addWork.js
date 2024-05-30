@@ -9,6 +9,7 @@ async function getAddWork(){
             // Get image file
             let img = document.querySelector('#file')
             let checkImg
+            let imgFile
             // Checks if file type and size is ok
             if(img.files.length == 0){
                 if(document.querySelector(".errorfile") === null){
@@ -38,6 +39,7 @@ async function getAddWork(){
                         // check format
                         if(img.value.split('.')[1] == 'jpg' || img.value.split('.')[1] == 'png'){
                             console.log('a')
+                            imgFile = img.value.split('.')[1]
                             checkImg = true
                             
                             if(document.querySelector(".errorfile") !== null){
@@ -89,7 +91,8 @@ async function getAddWork(){
 
             // Update API
             if(checkImg === true && checkTitle === true && checkCategory === true){
-                addWork(window.URL.createObjectURL(img.files[0]), title, category)
+                console.log(img.files[0].name, img.files[0].type, title, category)
+                addWork(img.files[0], title, category)
             }
 
         }
@@ -100,18 +103,17 @@ async function getAddWork(){
 }
 
 function addWork(image, title, category){
-    const addDetails = {
-        "image": image,
-        "title": title,
-        "category": category,
-    }
+    const formData = new FormData();
+    formData.append("image", image);
+    formData.append("title", title);
+    formData.append("category", category);
+
     fetch(`http://localhost:5678/api/works`, {
         method: "post",
-        headers: { 
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${dataToken}`
+        headers: {
+            "Authorization": `Bearer ${dataToken}`,
         },
-        body: JSON.stringify(addDetails)
+        body: formData
     }).then(async () => {
         // reload DOM with API update
         document.getElementById('editWork').remove()

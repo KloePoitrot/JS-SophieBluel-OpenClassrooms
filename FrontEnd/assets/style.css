@@ -373,8 +373,8 @@ input#addTitle {
 }
 .bluesection label.imgUplodaded img {
     margin: -1rem 0 -3.25rem 0;
-    height: 350px;
-    width: auto!important;
+    height: auto;
+    width: 200px!important;
 }
 
 
