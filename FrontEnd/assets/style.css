@@ -362,10 +362,10 @@ label[for="file"] {
     border-radius: 2rem;
     margin: .5rem 20% -1rem 20%;
 }
-input#titre, input#categorie {
+input#addTitle, input#addCategorie {
 	width:100%;
 }
-input#titre {
+input#addTitle {
 	margin-bottom:1rem;
 }
 .greyBtn{

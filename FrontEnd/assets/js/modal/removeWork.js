@@ -1,7 +1,9 @@
 var dataToken = sessionStorage.getItem("token")
 
 function getDeteleWork(){
+    // Get delete button
     const delBtns = document.querySelectorAll("i.deleteWork")
+    // check which button has been clicked and take the corresponding ID
     delBtns.forEach((delBtn) => {
         delBtn.addEventListener('click', (e) => {
             deteleWork(delBtn.getAttribute('data-id'))
@@ -21,6 +23,7 @@ function deteleWork(data){
         },
         body: JSON.stringify(delID)
     }).then(async () => {
+        // reload DOM with backend update
         document.getElementById('editWork').remove()
         modalEdit()
         getWork()

@@ -28,7 +28,7 @@ async function modalEdit(){
             data = await data.json()
             for(let i = 0; i < data.length ; i++){
                 catOption += `
-                <option value="` + data[i].name + `">` + data[i].name + `</option>`
+                <option value="` + data[i].id + `">` + data[i].name + `</option>`
             }
         }
     }).catch((error) => {
@@ -56,22 +56,22 @@ async function modalEdit(){
         
         <article class="galleryAddContent hidden">
                 <h2>Ajout photo</h2>
-                <form method="post">
+                <form>
                     <div class="bluesection">
                     <i class="fa-regular fa-image"></i> 
                         <label for="file">+ Ajouter photo</label>
                         <input id="file" type="file">
-                        jpg.png: 4mo max
+                        jpg, png: 4mo max
                     </div>
-                    <label for="titre">Titre</label>
-                    <input type="text" id="titre">
-                    <label for="categorie">Catégorie</label>
-                    <select name="categorie" id="categorie">
+                    <label for="addTitle">Titre</label>
+                    <input type="text" id="addTitle">
+                    <label for="addCategorie">Catégorie</label>
+                    <select name="category" id="addCategory">
                         <option value="none">--Choisissez une catégorie--</option>
                         ` + catOption + `
                     </select>
                     <div class="divider"></div>
-                    <input class="greyBtn" type="submit" name="sent" value="Valider">
+                    <input class="greyBtn" type="submit" id="sent" value="Valider">
                 </form>
             </article>
     </div>
@@ -93,7 +93,13 @@ async function modalEdit(){
     document.querySelector('.closeModal').addEventListener('click', () => {
         document.body.removeChild(sectionEdit)
     })
+
+    //fuction for adding or deleting works
     getDeteleWork()
+    document.querySelector('.galleryAddContent form').addEventListener('submit', (e) => {
+        e.preventDefault()
+        getAddWork()
+    })
 }
 
 if(dataToken !== null){
