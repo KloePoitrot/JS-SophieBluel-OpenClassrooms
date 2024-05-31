@@ -42,6 +42,7 @@ async function modalEdit(){
     sectionEdit.innerHTML = modalContent(workElements, catOption)
 
     document.body.appendChild(sectionEdit)
+
     // change to upload
     document.querySelector('input[name="addWork"]').addEventListener('click', () => {
         document.querySelector('.returnModal').className = 'fa-solid fa-arrow-left returnModal'
@@ -58,22 +59,32 @@ async function modalEdit(){
     document.querySelector('.closeModal').addEventListener('click', () => {
         document.body.removeChild(sectionEdit)
     })
+    
 
     //add image preview
     document.querySelector('#file').addEventListener('change', () => {
         // Remove image if nothing is selected
-        if(document.querySelector('#file').value === ''){
+        if(document.querySelector('#file').value === '' || (document.querySelector('#file').value.split('.')[1] !== 'jpg' || document.querySelector('#file').value.split('.')[1] !== 'png')){
             document.querySelector(".bluesection i").className = 'fa-regular fa-image';
             document.querySelector(".bluesection p").className = '';
             document.querySelector("label[for='file']").className = 'uploadBtn';
             document.querySelector("label[for='file']").innerHTML  = '+ Ajouter photo';
+            if(document.querySelector(".errorfile") === null){
+                document.querySelector(".bluesection").insertAdjacentHTML('afterend', '<p class="error errorfile">Veuillez ajouter une photo (png, jpg)</p>')
+            }
+            if(document.querySelector(".errorfile") !== null){
+                document.querySelector(".errorfile").innerHTML = 'Veuillez ajouter une photo (png, jpg)'
+            }
         }
         // Show preview if something is selected
-        if(document.querySelector('#file').value !== ''){
+        if(document.querySelector('#file').value !== '' && (document.querySelector('#file').value.split('.')[1] === 'jpg' || document.querySelector('#file').value.split('.')[1] === 'png')){
             document.querySelector(".bluesection i").className = 'hidden';
             document.querySelector(".bluesection p").className = 'hidden';
             document.querySelector("label[for='file']").className = 'imgUplodaded';
             document.querySelector("label[for='file']").innerHTML  = '<img src="' + window.URL.createObjectURL(document.querySelector('#file').files[0]) + '">';
+            if(document.querySelector(".errorfile") !== null){
+                document.querySelector(".errorfile").remove()
+            }
         }
     })
 

@@ -9,7 +9,6 @@ async function getAddWork(){
             // Get image file
             let img = document.querySelector('#file')
             let checkImg
-            let imgFile
             // Checks if file type and size is ok
             if(img.files.length == 0){
                 if(document.querySelector(".errorfile") === null){
@@ -19,43 +18,40 @@ async function getAddWork(){
                     document.querySelector(".errorfile").innerHTML = 'Veuillez ajouter une photo'
                 }
             }
-            if (img.files.length > 0 ) {
-                for (let i = 0; i <= img.files.length - 1; i++) {
-                    let fsize = img.files.item(i).size;
-                    let file = Math.round((fsize / 1024));
-                    console.log('e')
-                    // Check size
-                    if (file >= 4096) {
-                        console.log('c')
-                        checkImg = false
-                        if(document.querySelector(".errorfile") === null){
-                            document.querySelector(".bluesection").insertAdjacentHTML('afterend', '<p class="error errorfile">La photo est trop grande (4mo)</p>')
-                        }
-                        if(document.querySelector(".errorfile") !== null){
-                            document.querySelector(".errorfile").innerHTML = 'La photo est trop grande'
-                        }
-                    }
-                    if(file < 4096){
-                        // check format
-                        if(img.value.split('.')[1] == 'jpg' || img.value.split('.')[1] == 'png'){
-                            console.log('a')
-                            imgFile = img.value.split('.')[1]
-                            checkImg = true
-                            
-                            if(document.querySelector(".errorfile") !== null){
-                                document.querySelector(".errorfile").remove()
-                            }
-                        } else {
+
+            // check format
+            if(img.value.split('.')[1] == 'jpg' || img.value.split('.')[1] == 'png'){
+                if (img.files.length > 0 ) {
+                    for (let i = 0; i <= img.files.length - 1; i++) {
+                        let fsize = img.files.item(i).size;
+                        // Check size
+                        if (fsize > 104857600) {
                             checkImg = false
                             if(document.querySelector(".errorfile") === null){
-                                console.log('b')
-                                document.querySelector(".bluesection").insertAdjacentHTML('afterend', '<p class="error errorfile">Le format de la photo est invalide (jpg ou png)</p>')
+                                document.querySelector(".bluesection").insertAdjacentHTML('afterend', '<p class="error errorfile">La photo est trop grande (4mo)</p>')
                             }
+                            if(document.querySelector(".errorfile") !== null){
+                                document.querySelector(".errorfile").innerHTML = 'La photo est trop grande'
+                            }
+                        }
+                        if(fsize <= 104857600){
+                            checkImg = true
                         }
                     }
                 }
+                if(document.querySelector(".errorfile") !== null){
+                    document.querySelector(".errorfile").remove()
+                }
+            } else {
+                checkImg = false
+                if(document.querySelector(".errorfile") === null){
+                    document.querySelector(".bluesection").insertAdjacentHTML('afterend', '<p class="error errorfile">Le format de la photo est invalide (jpg ou png)</p>')
+                }
+                if(document.querySelector(".errorfile") !== null){
+                    document.querySelector(".errorfile").innerHTML = 'Le format de la photo est invalide (jpg ou png)'
+                }
             }
-            // change modal with image preview
+            
 
             // Get work title
             let title = document.querySelector('#addTitle').value
@@ -91,7 +87,6 @@ async function getAddWork(){
 
             // Update API
             if(checkImg === true && checkTitle === true && checkCategory === true){
-                console.log(img.files[0].name, img.files[0].type, title, category)
                 addWork(img.files[0], title, category)
             }
 
@@ -114,10 +109,9 @@ function addWork(image, title, category){
             "Authorization": `Bearer ${dataToken}`,
         },
         body: formData
-    }).then(async () => {
+    }).then(() => {
         // reload DOM with API update
         document.getElementById('editWork').remove()
-        modalEdit()
         getWork()
     }).catch((error) => {
         console.error(error);

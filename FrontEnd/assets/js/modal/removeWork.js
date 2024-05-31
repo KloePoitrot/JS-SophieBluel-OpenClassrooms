@@ -21,7 +21,7 @@ function deteleWork(data){
             "Authorization": `Bearer ${dataToken}`
         },
         body: JSON.stringify(delID)
-    }).then(async () => {
+    }).then(() => {
         // reload DOM with backend update
         document.getElementById('editWork').remove()
         modalEdit()
