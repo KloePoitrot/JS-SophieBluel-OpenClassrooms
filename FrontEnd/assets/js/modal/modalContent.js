@@ -11,7 +11,7 @@ function modalContent(workElements, catOption) {
                 ` + workElements + `
             </div>
             <div class="divider"></div>
-            <input type="submit" name="addWork" value="Ajouter une photo">
+            <input type="button" name="addWork" class="greenbtn" value="Ajouter une photo">
         </article>
         
         <article class="galleryAddContent hidden">

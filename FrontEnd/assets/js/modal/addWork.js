@@ -25,7 +25,7 @@ async function getAddWork(){
                     for (let i = 0; i <= img.files.length - 1; i++) {
                         let fsize = img.files.item(i).size;
                         // Check size
-                        if (fsize > 104857600) {
+                        if (fsize > 4194304) {
                             checkImg = false
                             if(document.querySelector(".errorfile") === null){
                                 document.querySelector(".bluesection").insertAdjacentHTML('afterend', '<p class="error errorfile">La photo est trop grande (4mo)</p>')
@@ -34,13 +34,14 @@ async function getAddWork(){
                                 document.querySelector(".errorfile").innerHTML = 'La photo est trop grande'
                             }
                         }
-                        if(fsize <= 104857600){
+                        if(fsize <= 4194304){
+                            console.log('c')
                             checkImg = true
+                            if(document.querySelector(".errorfile") !== null){
+                                document.querySelector(".errorfile").remove()
+                            }
                         }
                     }
-                }
-                if(document.querySelector(".errorfile") !== null){
-                    document.querySelector(".errorfile").remove()
                 }
             } else {
                 checkImg = false
