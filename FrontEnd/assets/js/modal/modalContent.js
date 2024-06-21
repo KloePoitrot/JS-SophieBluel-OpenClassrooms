@@ -25,7 +25,7 @@ function modalContent(workElements, catOption) {
                     </div>
                     <label for="addTitle">Titre</label>
                     <input type="text" id="addTitle">
-                    <label for="addCategorie">Catégorie</label>
+                    <label>Catégorie</label>
                     <select name="category" id="addCategory">
                         <option value="none">--Choisissez une catégorie--</option>
                         ` + catOption + `

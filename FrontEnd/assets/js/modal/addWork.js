@@ -35,7 +35,6 @@ async function getAddWork(){
                             }
                         }
                         if(fsize <= 4194304){
-                            console.log('c')
                             checkImg = true
                             if(document.querySelector(".errorfile") !== null){
                                 document.querySelector(".errorfile").remove()
